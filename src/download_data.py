@@ -7,7 +7,7 @@ RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def download_weather(lat=51.8787, lon=-0.4200,
-                     start="2021-01-01", end="2025-12-31"):
+                     start="2021-01-01", end="2026-10-01"):
     """Download hourly historical weather for Luton from Open-Meteo."""
     url = "https://archive-api.open-meteo.com/v1/archive"
     params = {
@@ -17,7 +17,7 @@ def download_weather(lat=51.8787, lon=-0.4200,
         "end_date": end,
         "hourly": ("temperature_2m,relative_humidity_2m,precipitation,"
                    "pressure_msl,wind_speed_10m,wind_direction_10m"),
-        "timezone": "Europe/London",
+        "timezone": "GMT",
     }
     response = requests.get(url, params=params, timeout=60)
     response.raise_for_status()
